@@ -1,0 +1,35 @@
+{
+  "name": "common-ts",
+  "version": "0.0.1",
+  "description": "Common TypeScript functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joewood/common-ts.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Joe Wood",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joewood/common-ts/issues"
+  },
+  "homepage": "https://github.com/joewood/common-ts#readme",
+  "dependencies": {
+    "core-js": "^1.2.6",
+    "d3-scale": "^0.6.4",
+    "lodash": "^4.11.1",
+    "react": "^15.0.1",
+    "react-addons-shallow-compare": "^15.0.1",
+    "react-bootstrap": "^0.29.2",
+    "react-dom": "^15.0.1"
+  },
+  "devDependencies": {
+    "tslint": "^3.8.1",
+    "typescript": "^1.8.10"
+  }
+}

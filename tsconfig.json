@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "lib",
+        "target": "ES5",
+        "module": "commonjs",
+        "jsx": "react",
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "declaration": true
+    },
+	"files": [
+        "typings/main.d.ts",
+        "test/test.ts"
+	]
+}

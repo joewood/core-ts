@@ -1,0 +1,17 @@
+{
+  "name": "common-ts",
+  "version": false,
+  "dependencies": {
+    "d3": "registry:npm/d3#3.0.0+20160211003958",
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519",
+    "moment": "registry:npm/moment#2.10.5+20160211003958",
+    "requirejs": "registry:npm/requirejs#2.2.0+20160319062357"
+  },
+  "ambientDependencies": {
+    "core-js": "registry:dt/core-js#0.0.0+20160317120654",
+    "node": "registry:dt/node#4.0.0+20160423143914",
+    "react": "registry:dt/react#0.14.0+20160423065914",
+    "react-bootstrap": "registry:dt/react-bootstrap#0.0.0+20160423135514",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040"
+  }
+}
