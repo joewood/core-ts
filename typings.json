@@ -3,8 +3,10 @@
   "version": false,
   "dependencies": {
     "d3": "registry:npm/d3#3.0.0+20160211003958",
+    "history": "registry:npm/history#2.0.0+20160406171533",
     "lodash": "registry:npm/lodash#4.0.0+20160416211519",
     "moment": "registry:npm/moment#2.10.5+20160211003958",
+    "react-router": "registry:npm/react-router#2.0.0+20160214194820",
     "requirejs": "registry:npm/requirejs#2.2.0+20160319062357"
   },
   "ambientDependencies": {

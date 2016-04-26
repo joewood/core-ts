@@ -6,10 +6,12 @@
         "jsx": "react",
         "sourceMap": true,
         "experimentalDecorators": true,
-        "declaration": true
+        "declaration": true,
+        "rootDir": "src",
+        "allowSyntheticDefaultImports": false
     },
 	"files": [
         "typings/main.d.ts",
-        "test/test.ts"
+        "src/main.ts"
 	]
 }
