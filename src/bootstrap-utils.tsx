@@ -43,14 +43,21 @@ export interface IField {
     value?: any;
 }
 
-export let FormRow = ({justifyContent = "stretch", className = null, formGroup = false, children = []}) => {
+export interface IFormRowProps {
+    justifyContent?: string;
+    className?: string;
+    formGroup?: boolean;
+}
+
+export let FormRow = (props: IFormRowProps) => {
+    const { justifyContent, className, formGroup, children } = props as IFormRowProps & { children: any[] };
     return (<div style={{
         marginLeft: formGroup ? -30 : -15,
         marginRight: formGroup ? -30 : -15,
         marginBottom: 15,
         marginTop: 0,
         display: "flex",
-        justifyContent: justifyContent,
+        justifyContent: justifyContent || "stretch",
     }}
         className={className}>
         {children}
@@ -263,21 +270,24 @@ export function getTwoFields(field1: IField, field2: IField): JSX.Element {
     return (<Row>{[getField(field1), getField(field2)]}</Row>);
 }
 
+export interface ToolbarButtonProps {
+    glyphicon?: "plus" | "pencil" | "remove" | "send" | "search" | "import" | "exclamation-sign" | "refresh";
+    label?: string;
+    disabled?: boolean;
+    tooltip?: string;
+    onClick?: () => void;
+}
+
 /** A glyph based toolbar button with a label */
-export let ToolbarButton = ({
-    glyphicon = "plus" as "plus" | "pencil" | "remove" | "send" | "search" | "import" | "exclamation-sign" | "refresh",
-    label = null as string,
-    disabled = false,
-    tooltip = null as string,
-    onClick = () => { 0; },
-}) => {
+export let ToolbarButton = (props: ToolbarButtonProps) => {
+    const {glyphicon, label, disabled, tooltip, onClick } = props;
     const button = <Button onClick={(evt: React.FormEvent) => { evt.preventDefault(); onClick(); } }
         key={label}
         bsSize="xsmall"
         bsStyle={(glyphicon === "remove") ? "danger" : null}
         disabled={disabled}
         style={styles.toolbarButton}>
-        <Glyphicon style={styles.glyphIcon} glyph={glyphicon}/>{label}
+        <Glyphicon style={styles.glyphIcon} glyph={glyphicon || "plus"}/>{label}
     </Button>;
     if (tooltip) {
         return (
@@ -290,30 +300,37 @@ export let ToolbarButton = ({
 };
 
 
-export let ModalDialog = ({
-    key = "unset",
-    contents = null as () => JSX.Element,
-    header = null as () => (JSX.Element | string),
-    showModal = false,
-    hideModal = null as () => void,
-}) => <Modal key={key} enforceFocus={true} show={!!showModal} onHide={hideModal} >
+export interface ModalDialogProps {
+    contents?: () => JSX.Element;
+    header?: () => (JSX.Element | string);
+    showModal?: boolean;
+    hideModal?: () => void;
+}
+
+export let ModalDialog = (props: ModalDialogProps) => {
+    const { contents, header, showModal, hideModal } = props;
+    return <Modal enforceFocus={true} show={!!showModal} onHide={hideModal} >
         <Modal.Header>
             <div>{showModal ? header() : "INVISIBLE"}</div>
         </Modal.Header>
         <Modal.Body>{ !showModal ? <div>Hidden</div> : contents() }</Modal.Body>
     </Modal>;
+}
 
-export let ConfirmDialog = ({
-    key = "unset",
-    header = "Confirm",
-    contents = null as () => (JSX.Element | string),
-    showModal = false,
-    onHide = null as () => void,
-    onConfirm = null as () => void,
-    confirmLabel = "Delete",
-}) => <Modal key={key } enforceFocus={ true} show={ showModal } onHide={ onHide }>
+export interface ConfirmDialogProps {
+    header?: string;
+    contents?: () => (JSX.Element | string),
+    showModal?: boolean;
+    onHide?: () => void,
+    onConfirm?: () => void,
+    confirmLabel: string;
+}
+
+export let ConfirmDialog = (props: ConfirmDialogProps) => {
+    const { header, contents, showModal, onHide, onConfirm, confirmLabel } = props;
+    return <Modal enforceFocus={ true} show={ showModal } onHide={ onHide }>
         <Modal.Header>
-            <div>{header}</div>
+            <div>{header || "Confirm"}</div>
         </Modal.Header>
         <Modal.Body>
             <Row>
@@ -324,7 +341,7 @@ export let ConfirmDialog = ({
                     style={{ flex: "1", maxWidth: 100, paddingLeft: 5, paddingRight: 5, margin: 0 }}>
                     <button className="btn-block btn btn-sm btn-danger"
                         bsSize="small"
-                        onClick={onConfirm}>{confirmLabel}</button>
+                        onClick={onConfirm}>{confirmLabel || "Delete"}</button>
                 </div>
                 <div key="cancel"
                     style={{ flex: "1", maxWidth: 100, paddingLeft: 5, margin: 0, paddingRight: 15 }}>
@@ -334,8 +351,7 @@ export let ConfirmDialog = ({
             </FormRow>
         </Modal.Body>
     </Modal>;
-
-
+}
 
 
 var _styles = {

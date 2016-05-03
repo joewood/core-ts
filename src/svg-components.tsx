@@ -19,7 +19,8 @@ export const WrappedSvgText = (props: {
     /** Line-height to write text (for multiple lines) */
     lineHeight: number,
     /** Average width of font */
-    fontWidth: number
+    fontWidth: number,
+    fontWeight?: number,
     textColor?:string;
 }) => {
     // return <Text key="DD" x={props.x} y={props.y} width={props.width} height={props.height}/>;
@@ -28,7 +29,6 @@ export const WrappedSvgText = (props: {
     const adjustedLineHeight = Math.min(lineHeight, height / texts.length);
     const yLine1 = height / 2 - (texts.length / 2 * adjustedLineHeight);
     const textColor = props.textColor || "black";
-    console.log("COLOR " + textColor);
     return (
         <g>
             <defs>
@@ -49,6 +49,7 @@ export const WrappedSvgText = (props: {
                 alignmentBaseline="hanging"
                 width={width - 8}
                 height={adjustedLineHeight}
+                fontWeight={props.fontWeight}
                 font={{ fontSize: fontWidth, fontFamily: "Arial", fontWeight: "600" }}
                 fill={textColor}
                 clipPath={"url(#clip" + text + ")"}
