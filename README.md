@@ -1,5 +1,5 @@
-# common-ts
+# core-ts
 
-Some common core Type Script functions for React, Bootstrap and D3
+Some common core Type Script functions 
 
 

@@ -1,12 +1,13 @@
 require("core-js/fn/object");
 import * as _ from "lodash";
-const _groupBy = require("lodash/groupby");
-const _mapKeys = require("lodash/mapkeys");
-const _keyBy = require("lodash/keyby");
+// NB - the filenames are case sensitive (even on Windows using React-Native packager)
+const _groupBy = require("lodash/groupBy");
+const _mapKeys = require("lodash/mapKeys");
+const _keyBy = require("lodash/keyBy");
 const _maxBy = require("lodash/maxBy");
 const _minBy = require("lodash/minBy");
 const _uniq = require("lodash/uniq");
-const _sortBy = require("lodash/sortby");
+const _sortBy = require("lodash/sortBy");
 const _find = require("lodash/find");
 const _some = require("lodash/some");
 const _max = require("lodash/max");
@@ -91,6 +92,23 @@ export function pascalCase(str: string): string {
     return str[0].toUpperCase() + str.slice(1).toLocaleLowerCase();
 }
 
+export function camelToUnderscore(str: string): string {
+    return splitCamel(str).join("_").toLowerCase();
+}
+
+export function splitCamel(str: string): string[] {
+    const target = [];
+    let index = 0;
+    for (let n = 0; n < str.length; n++) {
+        if (n==0 || (str[n] >= "a" && str[n] <= "z")) continue;
+        target.push(str.substr(index, n));
+        index = n;
+    }
+    if (index < str.length) target.push(str.substr(index));
+    return target;
+}
+
+
 export function values<T>(dict: { [index: string]: T }): T[] {
     if (!dict) { return []; }
     return (Object.values(dict) as T[]);
@@ -106,7 +124,7 @@ export function values<T>(dict: { [index: string]: T }): T[] {
 //     }, Promise.resolve([]));
 // }
 
-export function promiseFSequence<T>(promises:(() =>  Promise<T>)[]): Promise<T[]> {
+export function promiseFSequence<T>(promises: (() => Promise<T>)[]): Promise<T[]> {
     return promises.reduce(function (p, c) {
         return p.then(function (retValues) {
             return c().then(function (retValue) {
