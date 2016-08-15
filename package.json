@@ -14,7 +14,6 @@
     "tsconfig.json",
     "lib",
     "src",
-    "typings",
     "README.md",
     "typings.json",
     "LICENSE"
