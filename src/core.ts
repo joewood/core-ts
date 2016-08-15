@@ -1,4 +1,4 @@
-require("core-js/fn/object");
+import "core-js/fn/object";
 import * as _ from "lodash";
 // NB - the filenames are case sensitive (even on Windows using React-Native packager)
 const _groupBy = require("lodash/groupBy");

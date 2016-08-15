@@ -33,7 +33,9 @@
     "lodash": "^4.14.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.30",
+    "@types/node": "^6.0.33",
     "tslint": "^3.14.0",
-    "typescript": "^1.8.10"
+    "typescript": "^2.0.0"
   }
 }

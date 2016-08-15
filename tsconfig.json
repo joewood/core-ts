@@ -8,10 +8,12 @@
         "experimentalDecorators": true,
         "declaration": true,
         "rootDir": "src",
-        "allowSyntheticDefaultImports": false
+        "allowSyntheticDefaultImports": false,
+        "lib": [
+            "es2015","es2015.promise","es2017.object"
+        ]
     },
 	"files": [
-        "typings/index.d.ts",
         "src/main.ts"
 	]
 }
