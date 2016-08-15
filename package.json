@@ -4,8 +4,7 @@
   "description": "Common TypeScript functions",
   "main": "lib/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "tsc -p ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -13,6 +12,7 @@
   },
   "files": [
     "tsconfig.json",
+    "lib",
     "src",
     "typings",
     "README.md",
